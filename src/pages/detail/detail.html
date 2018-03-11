@@ -42,8 +42,8 @@
     <span item-right>TOTAL: R$ {{ total }}</span>
   </ion-item-divider>
 
-  <ion-fab top right edge mini>
-    <button ion-fab>
+  <ion-fab top right edge>
+    <button ion-fab (click)="toRegister()">
       <ion-icon name="arrow-dropright"></ion-icon>
     </button>
   </ion-fab>

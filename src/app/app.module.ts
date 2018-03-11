@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CarroServiceProvider } from '../providers/carros-service/carros-service';
-import { DetailPage } from '../pages/detail/detail';
 
 @NgModule({
   declarations: [

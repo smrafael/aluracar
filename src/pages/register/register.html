@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Register Rent</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h2>{{ car.nome }}</h2>
+  <p>R$ {{ totalPrice }}</p>
+
+  <form (ngSubmit)="register()" #form="ngForm">
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input [(ngModel)]="name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input [(ngModel)]="email" name="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input [(ngModel)]="address" name="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Date</ion-label>
+      <ion-datetime [(ngModel)]="date" name="date" dateFormat="DD/MM/YY"></ion-datetime>
+    </ion-item>
+  </form>
+
+  <ion-fab top right edge>
+      <button ion-fab (click)="form.ngSubmit.emit()">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-fab>
+
+</ion-content>

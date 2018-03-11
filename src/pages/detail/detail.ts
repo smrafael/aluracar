@@ -1,3 +1,4 @@
+import { RegisterPage } from './../register/register';
 import { Accessory } from './../../models/accessory';
 import { NavLifecycles } from './../../utils/ionic/nav/nav-lifecycles';
 import { Car } from './../../models/car';
@@ -36,6 +37,13 @@ export class DetailPage implements NavLifecycles {
   public refreshPrice(checked, accesory: Accessory) {
     checked ? this.total += accesory.price 
       : this.total -= accesory.price;
+  }
+
+  public toRegister() {
+    this.navCtrl.push(RegisterPage.name, {
+      car: this.car,
+      totalPrice: this.total
+    });
   }
 
 }
