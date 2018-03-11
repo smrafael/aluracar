@@ -4,13 +4,20 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CarServiceProvider } from '../providers/car-service/car-service';
 import { ScheduleServiceProvider } from '../providers/schedule-service/schedule-service';
+import { SchedulingDaoProvider } from '../providers/scheduling-dao/scheduling-dao';
 
 import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,12 @@ import 'rxjs/add/operator/finally';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: 'aluracar',
+      storeName: 'scheduling',
+      driverOrder: ['indexeddb']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +44,8 @@ import 'rxjs/add/operator/finally';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CarServiceProvider,
-    ScheduleServiceProvider
+    ScheduleServiceProvider,
+    SchedulingDaoProvider
   ]
 })
 export class AppModule {}

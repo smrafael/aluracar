@@ -5,6 +5,7 @@ import { ScheduleServiceProvider } from './../../providers/schedule-service/sche
 import { Car } from './../../models/car';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Alert } from 'ionic-angular';
+import { SchedulingDaoProvider } from '../../providers/scheduling-dao/scheduling-dao';
 
 @IonicPage()
 @Component({
@@ -25,7 +26,8 @@ export class RegisterPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private scheduleService: ScheduleServiceProvider,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private schedulingDao: SchedulingDaoProvider) {
 
     this.car = this.navParams.get('car');
     this.totalPrice = this.navParams.get('totalPrice');
@@ -52,7 +54,9 @@ export class RegisterPage {
       emailCliente: this.email,
       modeloCarro: this.car.nome,
       precoTotal: this.totalPrice,
-      data: '27/06/2018'
+      data: this.date,
+      sended: false,
+      confirmed: false
     }
 
     this.alert = this.alertCtrl.create({
@@ -66,7 +70,21 @@ export class RegisterPage {
     });
     
     let msg = '';
-    this.scheduleService.schedule(scheduling)
+
+    this.schedulingDao.isDuplicated(scheduling)
+      .mergeMap(isDuplicated => {
+        if (isDuplicated) {
+          throw Error('Scheduling duplicated');
+        }
+        return this.scheduleService.schedule(scheduling)
+      })
+      .mergeMap((result) => {
+        let observable = this.schedulingDao.save(scheduling);
+        if (result instanceof Error) {
+          throw result;
+        }
+        return observable;
+      })
       .finally(
         () => {
           this.alert.setSubTitle(msg);
@@ -74,12 +92,8 @@ export class RegisterPage {
         }
       )
       .subscribe(
-        () => {
-          msg = 'Scheduling registered';
-        },
-        () => {
-          msg = 'Error on scheduling';
-        }
+        () => msg = 'Scheduling registered',
+        (err: Error) => msg = err.message
       );
   }
 

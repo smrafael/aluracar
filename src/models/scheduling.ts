@@ -5,4 +5,6 @@ export class Scheduling {
     modeloCarro: string;
     precoTotal: number;
     data: string;
+    sended: boolean;
+    confirmed: boolean;
 }
