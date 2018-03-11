@@ -1,5 +1,5 @@
 import { DetailPage } from './../detail/detail';
-import { CarroServiceProvider } from './../../providers/carros-service/carros-service';
+import { CarServiceProvider } from './../../providers/car-service/car-service';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -19,7 +19,7 @@ export class HomePage implements NavLifecycles {
   constructor(public navCtrl: NavController,
     public _loadingCrtl: LoadingController,
     public _alertCtrl: AlertController,
-    public carrosService: CarroServiceProvider) { }
+    public carrosService: CarServiceProvider) { }
 
   ionViewDidLoad(): void {
     let loading = this._loadingCrtl.create({

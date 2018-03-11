@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 let config = require('../../lib/config.json');
 
 @Injectable()
-export class CarroServiceProvider {
+export class CarServiceProvider {
 
   constructor(public _http: HttpClient) {
   }

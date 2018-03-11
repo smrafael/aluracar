@@ -7,7 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { CarroServiceProvider } from '../providers/carros-service/carros-service';
+import { CarServiceProvider } from '../providers/car-service/car-service';
+import { ScheduleServiceProvider } from '../providers/schedule-service/schedule-service';
+
+import 'rxjs/add/operator/finally';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { CarroServiceProvider } from '../providers/carros-service/carros-service
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CarroServiceProvider
+    CarServiceProvider,
+    ScheduleServiceProvider
   ]
 })
 export class AppModule {}
