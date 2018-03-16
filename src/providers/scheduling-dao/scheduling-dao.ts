@@ -28,4 +28,13 @@ export class SchedulingDaoProvider {
     return Observable.fromPromise(promise);
   }
 
+  list(): Observable<Scheduling[]> {
+    let result: Scheduling[] = [];
+    let promise = this.storage.forEach(s => {
+      result.push(s);
+    }).then(() => result);
+
+    return Observable.fromPromise(promise);
+  }
+
 }

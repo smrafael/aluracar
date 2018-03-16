@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Schedulings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item [class.fail]="!s.sended" *ngFor="let s of schedulings">
+      <h2>{{ s.nomeCliente }}</h2>
+      <p>{{ s.modeloCarro }}</p>
+
+      <button ion-button item-end icon-only clear
+        *ngIf="!s.sended" (click)="resend(s)">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
