@@ -7,7 +7,6 @@ import { Storage } from '@ionic/storage';
 export class SchedulingDaoProvider {
 
   constructor(public storage: Storage) {
-    console.log('Hello SchedulingDaoProvider Provider');
   }
 
   private generateKey(scheduling: Scheduling) {

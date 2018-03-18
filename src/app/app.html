@@ -1,5 +1,5 @@
 <ion-split-pane>
-    <ion-menu [content]="content">
+    <ion-menu [content]="content" *ngIf="user">
         <ion-content>
             <ion-item id="menu-header">
                 <div>
@@ -7,8 +7,8 @@
                         <img src="assets/imgs/logo.png"/>
                     </ion-avatar>
                 </div>
-                <h2>Rafael Mendes</h2>
-                <p>rafael.sm1990@gmail.com</p>
+                <h2>{{ userService.getUser().nome }}</h2>
+                <p> {{ userService.getUser().email }} </p>
             </ion-item>
             <ion-list>
                 <button ion-item menuClose *ngFor="let page of pages"

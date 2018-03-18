@@ -10,7 +10,6 @@ let config = require('../../lib/config.json');
 export class ScheduleServiceProvider {
 
   constructor(public _http: HttpClient) {
-    console.log('Hello ScheduleServiceProvider Provider');
   }
 
   public schedule(scheduling: Scheduling) {

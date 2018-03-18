@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { CarServiceProvider } from '../providers/car-service/car-service';
 import { ScheduleServiceProvider } from '../providers/schedule-service/schedule-service';
 import { SchedulingDaoProvider } from '../providers/scheduling-dao/scheduling-dao';
+import { UserServiceProvider } from '../providers/user-service/user-service';
 
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/do';
@@ -19,7 +20,6 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
-import { UserServiceProvider } from '../providers/user-service/user-service';
 
 @NgModule({
   declarations: [

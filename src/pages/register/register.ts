@@ -36,7 +36,6 @@ export class RegisterPage {
   ionViewDidLoad() { }
 
   public register() {
-
     if (!this.name || !this.address || !this.email) {
       this.alertCtrl.create({
         title: 'Alert',
