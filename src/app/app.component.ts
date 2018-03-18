@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SchedulingListPage } from '../pages/scheduling-list/scheduling-list';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
-  templateUrl: 'app.html'
+  selector: 'my-app',
+  templateUrl: 'app.html',
 })
 export class MyApp {
-  rootPage:any = SchedulingListPage;
+  @ViewChild(Nav) public nav: Nav;
+  rootPage:any = LoginPage;
+
+  public pages = [
+    { title: 'Scheduling', page: SchedulingListPage.name, icon: 'calendar' }
+  ]
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -18,5 +25,10 @@ export class MyApp {
       splashScreen.hide();
     });
   }
+
+  public go(page): void{
+    this.nav.push(page);
+  }
+
 }
 

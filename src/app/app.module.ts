@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -18,11 +19,13 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
+import { UserServiceProvider } from '../providers/user-service/user-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import 'rxjs/add/observable/of';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -45,7 +49,8 @@ import 'rxjs/add/observable/of';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CarServiceProvider,
     ScheduleServiceProvider,
-    SchedulingDaoProvider
+    SchedulingDaoProvider,
+    UserServiceProvider
   ]
 })
 export class AppModule {}
