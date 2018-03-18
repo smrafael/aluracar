@@ -1,3 +1,4 @@
+import { Camera } from '@ionic-native/camera';
 import { User } from './../../models/user';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -14,9 +15,24 @@ export class ProfilePage {
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public userService: UserServiceProvider) {
+    public userService: UserServiceProvider,
+    private camera: Camera) {
     
     this.user = this.userService.getUser();
+  }
+
+  public takePicture() {
+    this.camera.getPicture({
+      destinationType: this.camera.DestinationType.FILE_URI,
+      saveToPhotoAlbum: true,
+      correctOrientation: true
+    }).then(picture => {
+      this.userService.setAvatar(picture);
+    });
+  }
+
+  get avatar() {
+    return this.userService.getAvatar();
   }
 
 }

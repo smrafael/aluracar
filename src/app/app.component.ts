@@ -41,5 +41,9 @@ export class MyApp {
     return this.userService.getUser();
   }
 
+  get avatar() {
+    return this.userService.getAvatar();
+  }
+
 }
 

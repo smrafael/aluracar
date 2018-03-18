@@ -10,8 +10,8 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class LoginPage {
 
-  public email: String;
-  public passwd: String;
+  public email: String = 'joao@alura.com.br';
+  public passwd: String = 'alura123';
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,

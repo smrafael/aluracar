@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -50,7 +51,8 @@ import 'rxjs/add/observable/of';
     CarServiceProvider,
     ScheduleServiceProvider,
     SchedulingDaoProvider,
-    UserServiceProvider
+    UserServiceProvider,
+    Camera
   ]
 })
 export class AppModule {}
