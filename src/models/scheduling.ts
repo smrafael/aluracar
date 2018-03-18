@@ -7,4 +7,5 @@ export class Scheduling {
     data: string;
     sended: boolean;
     confirmed: boolean;
+    viewed: boolean;
 }

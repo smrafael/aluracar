@@ -36,4 +36,9 @@ export class SchedulingDaoProvider {
     return Observable.fromPromise(promise);
   }
 
+  getById(id) {
+    let promise = this.storage.get(id);
+    return Observable.fromPromise(promise);
+  }
+
 }

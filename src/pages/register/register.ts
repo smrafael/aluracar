@@ -55,7 +55,8 @@ export class RegisterPage {
       precoTotal: this.totalPrice,
       data: this.date,
       sended: false,
-      confirmed: false
+      confirmed: false,
+      viewed: false
     }
 
     this.alert = this.alertCtrl.create({

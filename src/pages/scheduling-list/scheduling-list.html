@@ -14,6 +14,8 @@
       <h2>{{ s.nomeCliente }}</h2>
       <p>{{ s.modeloCarro }}</p>
 
+      <ion-badge item-end *ngIf="s.confirmed && !s.viewed">Confirmado!</ion-badge>
+
       <button ion-button item-end icon-only clear
         *ngIf="!s.sended" (click)="resend(s)">
         <ion-icon name="refresh"></ion-icon>

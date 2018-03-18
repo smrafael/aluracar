@@ -29,6 +29,20 @@ export class SchedulingListPage {
       });
   }
 
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.refreshSchedulings();
+    }, 5000);
+  }
+
+  private refreshSchedulings() {
+    this.schedulings.filter((scheduling: Scheduling) => scheduling.confirmed)
+      .forEach((scheduling: Scheduling) => {
+        scheduling.viewed = true;
+        this.schedulingDao.save(scheduling);
+      })
+  }
+
   resend(scheduling: Scheduling) {
     let alert = this.alertCtrl.create({
       title: 'Alert',
